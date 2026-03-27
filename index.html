@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arkonis — On-Demand Data Teams for the GCC</title>
+<meta name="description" content="Senior data engineers, ML engineers, and data scientists deployed in under 48 hours across UAE, Saudi Arabia, and the GCC. Vetted talent, no upfront fees.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/favicon-512x512.png">
+
+<!-- Open Graph / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://arkonis.ai/">
+<meta property="og:title" content="Arkonis — On-Demand Data Teams for the GCC">
+<meta property="og:description" content="Senior data engineers, ML engineers, and data scientists deployed in under 48 hours across UAE and Saudi Arabia. Vetted talent, no upfront fees.">
+<meta property="og:image" content="https://arkonis.ai/social-brand-awareness-1200x628.png">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Arkonis — On-Demand Data Teams for the GCC">
+<meta name="twitter:description" content="Senior data engineers, ML engineers, and data scientists deployed in under 48 hours across UAE and Saudi Arabia.">
+<meta name="twitter:image" content="https://arkonis.ai/social-brand-awareness-1200x628.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080a0f;
+    --bg2: #0d1017;
+    --bg3: #111520;
+    --surface: #141824;
+    --surface2: #1a2030;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+    --text: #e8eaf0;
+    --text2: #8b90a0;
+    --text3: #555a6a;
+    --accent: #4f7cff;
+    --accent2: #7b9fff;
+    --accent-dim: rgba(79,124,255,0.12);
+    --accent-glow: rgba(79,124,255,0.25);
+    --green: #22c984;
+    --green-dim: rgba(34,201,132,0.12);
+    --amber: #f5a623;
+    --amber-dim: rgba(245,166,35,0.1);
+    --font-display: 'Syne', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* ── GRID BACKGROUND ── */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(79,124,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(79,124,255,0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 0 40px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(8,10,15,0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+    color: var(--text);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .nav-logo .dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--accent);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(0.85); }
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text2);
+    text-decoration: none;
+    transition: color 0.2s;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-cta {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent2) !important;
+    border: 1px solid rgba(79,124,255,0.3);
+    padding: 7px 16px;
+    border-radius: 6px;
+    transition: all 0.2s !important;
+    background: var(--accent-dim);
+  }
+
+  .nav-cta:hover {
+    background: rgba(79,124,255,0.2) !important;
+    border-color: var(--accent) !important;
+    color: white !important;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 40px 80px;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(79,124,255,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-glow2 {
+    position: absolute;
+    bottom: 10%;
+    left: 20%;
+    width: 400px;
+    height: 300px;
+    background: radial-gradient(ellipse, rgba(34,201,132,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--accent2);
+    background: var(--accent-dim);
+    border: 1px solid rgba(79,124,255,0.2);
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 40px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-badge .badge-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--green);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .hero-headline {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(48px, 7vw, 88px);
+    line-height: 1.0;
+    letter-spacing: -2px;
+    color: var(--text);
+    max-width: 900px;
+    margin-bottom: 28px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  .hero-headline .hl-accent {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 50%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-family: var(--font-body);
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--text2);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 52px;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    background: var(--accent);
+    padding: 13px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 0 32px rgba(79,124,255,0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 48px rgba(79,124,255,0.45);
+    background: #5d87ff;
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--text2);
+    background: transparent;
+    padding: 13px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    border: 1px solid var(--border2);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-secondary:hover {
+    color: var(--text);
+    border-color: rgba(255,255,255,0.25);
+    background: var(--surface);
+  }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 0 40px 100px;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+
+  .stat-item {
+    padding: 0 48px;
+    text-align: center;
+    border-right: 1px solid var(--border);
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-number {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -1px;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-number span {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .stat-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* ── SECTION COMMONS ── */
+  section {
+    position: relative;
+    z-index: 1;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: var(--text);
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .section-sub {
+    font-size: 16px;
+    color: var(--text2);
+    font-weight: 300;
+    max-width: 520px;
+    line-height: 1.7;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .how {
+    padding: 100px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .how-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-top: 64px;
+  }
+
+  .how-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .how-step {
+    display: flex;
+    gap: 20px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .how-step:last-child { border-bottom: none; }
+
+  .step-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 0.06em;
+    padding-top: 4px;
+    min-width: 28px;
+  }
+
+  .step-content h4 {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+    letter-spacing: -0.3px;
+  }
+
+  .step-content p {
+    font-size: 14px;
+    color: var(--text2);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  .how-step:hover .step-content h4 { color: var(--accent2); }
+
+  /* TIMELINE VISUAL */
+  .how-visual {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .how-visual::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  }
+
+  .timeline-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .timeline-item:last-child { border-bottom: none; }
+
+  .tl-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .tl-icon.blue { background: var(--accent-dim); }
+  .tl-icon.green { background: var(--green-dim); }
+  .tl-icon.amber { background: var(--amber-dim); }
+
+  .tl-body {}
+  .tl-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text3);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .tl-title {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .tl-sub {
+    font-size: 12px;
+    color: var(--text2);
+    font-weight: 300;
+    margin-top: 2px;
+  }
+
+  .tl-badge {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+  }
+  .tl-badge.green { background: var(--green-dim); color: var(--green); }
+  .tl-badge.blue { background: var(--accent-dim); color: var(--accent2); }
+  .tl-badge.amber { background: var(--amber-dim); color: var(--amber); }
+
+  /* ── TALENT SECTION ── */
+  .talent {
+    padding: 100px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .talent-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 48px;
+    gap: 24px;
+  }
+
+  /* FILTER PILLS */
+  .filter-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+
+  .pill {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding: 6px 14px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    color: var(--text2);
+    cursor: pointer;
+    transition: all 0.2s;
+    background: transparent;
+    letter-spacing: 0.03em;
+  }
+
+  .pill:hover, .pill.active {
+    background: var(--accent-dim);
+    border-color: rgba(79,124,255,0.35);
+    color: var(--accent2);
+  }
+
+  /* TALENT GRID */
+  .talent-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .talent-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    transition: all 0.25s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .talent-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(79,124,255,0.3), transparent);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .talent-card:hover {
+    border-color: rgba(79,124,255,0.25);
+    background: var(--surface2);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  }
+
+  .talent-card:hover::before { opacity: 1; }
+
+  .card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  .avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 16px;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .avail-badge {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+  }
+
+  .avail-badge.available {
+    background: var(--green-dim);
+    color: var(--green);
+    border: 1px solid rgba(34,201,132,0.2);
+  }
+
+  .avail-badge.soon {
+    background: var(--amber-dim);
+    color: var(--amber);
+    border: 1px solid rgba(245,166,35,0.2);
+  }
+
+  .card-name {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.3px;
+    margin-bottom: 2px;
+  }
+
+  .card-role {
+    font-size: 13px;
+    color: var(--text2);
+    font-weight: 300;
+    margin-bottom: 4px;
+  }
+
+  .card-location {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 0.04em;
+  }
+
+  .card-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 16px;
+  }
+
+  .skill-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text3);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.03em;
+  }
+
+  .card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  .card-exp {
+    font-size: 12px;
+    color: var(--text2);
+    font-weight: 300;
+  }
+
+  .card-type {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent2);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── BUILD TEAM CTA ── */
+  .build-team {
+    padding: 100px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .build-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 64px;
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .build-card::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(79,124,255,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .build-card::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: -60px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(34,201,132,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .build-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: var(--text);
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .build-sub {
+    font-size: 15px;
+    color: var(--text2);
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+  /* FORM */
+  .form-group {
+    margin-bottom: 16px;
+  }
+
+  .form-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .form-input, .form-select, .form-textarea {
+    width: 100%;
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--text);
+    outline: none;
+    transition: all 0.2s;
+    -webkit-appearance: none;
+  }
+
+  .form-input::placeholder, .form-textarea::placeholder {
+    color: var(--text3);
+  }
+
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: rgba(79,124,255,0.4);
+    box-shadow: 0 0 0 3px rgba(79,124,255,0.08);
+  }
+
+  .form-select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23555a6a' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+  }
+
+  .form-select option { background: var(--surface); }
+
+  .form-textarea {
+    resize: none;
+    height: 80px;
+    line-height: 1.5;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  /* ── USE CASES ── */
+  .use-cases {
+    padding: 100px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .cases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 48px;
+  }
+
+  .case-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    transition: all 0.2s;
+  }
+
+  .case-card:hover {
+    border-color: rgba(79,124,255,0.2);
+    background: var(--surface2);
+  }
+
+  .case-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  .case-title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+  }
+
+  .case-desc {
+    font-size: 13px;
+    color: var(--text2);
+    font-weight: 300;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .case-roles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .case-role {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent2);
+    background: var(--accent-dim);
+    border: 1px solid rgba(79,124,255,0.15);
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── PARTNERS ── */
+  .partners { padding: 100px 0; border-top: 1px solid var(--border); }
+  .partner-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 48px;
+  }
+  .partner-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    transition: all 0.2s;
+  }
+  .partner-card:hover {
+    border-color: rgba(79,124,255,0.2);
+    background: var(--surface2);
+  }
+  .partner-icon { font-size: 28px; margin-bottom: 16px; }
+  .partner-title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+  }
+  .partner-desc {
+    font-size: 13px;
+    color: var(--text2);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+  .partner-cta-row { text-align: center; margin-top: 48px; }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid var(--border);
+    padding: 48px 0;
+  }
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .footer-logo {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--text2);
+    letter-spacing: -0.5px;
+  }
+
+  .footer-meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 0.04em;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: var(--text3);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--text2); }
+
+  /* ── WHATSAPP FAB ── */
+  .whatsapp-fab {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 99;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #25d366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+  }
+  .whatsapp-fab:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 28px rgba(37,211,102,0.5);
+  }
+  .whatsapp-fab svg { width: 28px; height: 28px; fill: #fff; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 100px 20px 60px; }
+    .stats-bar { flex-direction: column; gap: 32px; padding: 0 20px 80px; }
+    .stat-item { border-right: none; border-bottom: 1px solid var(--border); padding: 0 0 24px; }
+    .stat-item:last-child { border-bottom: none; }
+    .container { padding: 0 20px; }
+    .how-grid { grid-template-columns: 1fr; gap: 40px; }
+    .talent-grid { grid-template-columns: 1fr; }
+    .build-card { grid-template-columns: 1fr; padding: 32px; gap: 40px; }
+    .cases-grid { grid-template-columns: 1fr; }
+    .partner-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-inner { flex-direction: column; text-align: center; }
+    .talent-header { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+<!-- Analytics — Plausible (privacy-friendly, no cookie banner needed) -->
+<script defer data-domain="arkonis.ai" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+<script>
+if (/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) && 'ontouchstart' in window) {
+  window.location.replace('/mobile.html');
+}
+</script>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="dot"></div>
+    arkonis<span style="color:var(--text3)">.ai</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#talent">Talent</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#use-cases">Use Cases</a></li>
+    <li><a href="#partners">Partners</a></li>
+    <li><a href="#build" class="nav-cta">Build Your Team →</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+
+  <div class="hero-badge">
+    <div class="badge-dot"></div>
+    GCC's On-Demand Data Network
+  </div>
+
+  <h1 class="hero-headline">
+    Your data team,<br>
+    <span class="hl-accent">deployed in days.</span>
+  </h1>
+
+  <p class="hero-sub">
+    Senior data engineers, ML engineers, analysts, and data scientists — vetted, available, and ready to embed in your organisation across the UAE and GCC.
+  </p>
+
+  <div class="hero-actions">
+    <a href="#build" class="btn-primary">
+      Build Your Team
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <a href="#talent" class="btn-secondary">Browse Talent</a>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-number"><span>48h</span></div>
+    <div class="stat-label">Avg. Team Assembly</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">120<span>+</span></div>
+    <div class="stat-label">Vetted Professionals</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number"><span>8</span></div>
+    <div class="stat-label">GCC Countries</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">Full<span>–</span>Frac</div>
+    <div class="stat-label">Time Flexibility</div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-label">// Process</div>
+      <h2 class="section-title">From brief to team<br>in under 48 hours.</h2>
+      <p class="section-sub">Specialist data talent, assembled fast. Tell us what you need — directly or through your delivery partner — and we match the team.</p>
+    </div>
+
+    <div class="how-grid">
+      <div class="how-steps fade-up">
+        <div class="how-step">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <h4>Brief Us</h4>
+            <p>You — or your consulting partner — tell us the sector, project scope, required skills, and timeline. Takes five minutes.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <h4>We Match</h4>
+            <p>Our team curates a shortlist of pre-vetted professionals who fit your exact requirements.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <h4>You Meet</h4>
+            <p>30-minute intro calls with your shortlist. No surprises — you only meet people we'd stake our name on.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="step-num">04</div>
+          <div class="step-content">
+            <h4>Team Deploys</h4>
+            <p>Contracts signed, access provisioned, work begins. Full-time, part-time, or project-based.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="how-visual fade-up">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--text3);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:20px;">Live Request — Example</div>
+        <div class="timeline-item">
+          <div class="tl-icon blue">📋</div>
+          <div class="tl-body">
+            <div class="tl-label">Today, 09:14</div>
+            <div class="tl-title">Brief received</div>
+            <div class="tl-sub">FinTech, 2× Data Engineers + 1× ML</div>
+          </div>
+          <div class="tl-badge green">Done</div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-icon amber">🔍</div>
+          <div class="tl-body">
+            <div class="tl-label">Today, 11:30</div>
+            <div class="tl-title">Shortlist curated</div>
+            <div class="tl-sub">6 profiles matched, 3 selected</div>
+          </div>
+          <div class="tl-badge green">Done</div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-icon blue">🤝</div>
+          <div class="tl-body">
+            <div class="tl-label">Tomorrow, 10:00</div>
+            <div class="tl-title">Intro calls scheduled</div>
+            <div class="tl-sub">3 × 30-min sessions</div>
+          </div>
+          <div class="tl-badge amber">Scheduled</div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-icon green">🚀</div>
+          <div class="tl-body">
+            <div class="tl-label">Day 3</div>
+            <div class="tl-title">Team deployed</div>
+            <div class="tl-sub">Contracts live, access granted</div>
+          </div>
+          <div class="tl-badge blue">Pending</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TALENT -->
+<section class="talent" id="talent">
+  <div class="container">
+    <div class="talent-header fade-up">
+      <div>
+        <div class="section-label">// Network</div>
+        <h2 class="section-title">The bench.</h2>
+        <p class="section-sub">A sample of our vetted professionals. Every profile is interviewed, reference-checked, and GCC-market ready.</p>
+      </div>
+    </div>
+
+    <div class="filter-pills fade-up">
+      <button class="pill active" onclick="filterTalent('all', this)">All</button>
+      <button class="pill" onclick="filterTalent('data-engineer', this)">Data Engineer</button>
+      <button class="pill" onclick="filterTalent('ml-engineer', this)">ML Engineer</button>
+      <button class="pill" onclick="filterTalent('data-scientist', this)">Data Scientist</button>
+      <button class="pill" onclick="filterTalent('analytics', this)">Analytics</button>
+    </div>
+
+    <div class="talent-grid" id="talent-grid">
+
+      <div class="talent-card fade-up" data-type="data-engineer">
+        <div class="card-top">
+          <div class="avatar" style="background:linear-gradient(135deg,#4f7cff,#7b9fff)">AK</div>
+          <div class="avail-badge available">● Available</div>
+        </div>
+        <div class="card-name">Ahmed K.</div>
+        <div class="card-role">Senior Data Engineer</div>
+        <div class="card-location">Dubai, UAE</div>
+        <div class="card-skills">
+          <span class="skill-tag">Spark</span>
+          <span class="skill-tag">dbt</span>
+          <span class="skill-tag">Snowflake</span>
+          <span class="skill-tag">Airflow</span>
+          <span class="skill-tag">Python</span>
+        </div>
+        <div class="card-meta">
+          <span class="card-exp">8 yrs · Banking & FinTech</span>
+          <span class="card-type">Full or Part-Time</span>
+        </div>
+      </div>
+
+      <div class="talent-card fade-up" data-type="ml-engineer">
+        <div class="card-top">
+          <div class="avatar" style="background:linear-gradient(135deg,#22c984,#34d89a)">SR</div>
+          <div class="avail-badge available">● Available</div>
+        </div>
+        <div class="card-name">Sara R.</div>
+        <div class="card-role">ML Engineer</div>
+        <div class="card-location">Abu Dhabi, UAE</div>
+        <div class="card-skills">
+          <span class="skill-tag">PyTorch</span>
+          <span class="skill-tag">MLflow</span>
+          <span class="skill-tag">LLMs</span>
+          <span class="skill-tag">Azure ML</span>
+          <span class="skill-tag">RAG</span>
+        </div>
+        <div class="card-meta">
+          <span class="card-exp">6 yrs · Gov & Energy</span>
+          <span class="card-type">Project-Based</span>
+        </div>
+      </div>
+
+      <div class="talent-card fade-up" data-type="data-scientist">
+        <div class="card-top">
+          <div class="avatar" style="background:linear-gradient(135deg,#a78bfa,#c4b5fd)">MH</div>
+          <div class="avail-badge soon">◐ Available Q2</div>
+        </div>
+        <div class="card-name">Mohammed H.</div>
+        <div class="card-role">Data Scientist</div>
+        <div class="card-location">Riyadh, KSA</div>
+        <div class="card-skills">
+          <span class="skill-tag">Forecasting</span>
+          <span class="skill-tag">NLP</span>
+          <span class="skill-tag">scikit-learn</span>
+          <span class="skill-tag">Tableau</span>
+        </div>
+        <div class="card-meta">
+          <span class="card-exp">5 yrs · Retail & Telco</span>
+          <span class="card-type">Full-Time</span>
+        </div>
+      </div>
+
+      <div class="talent-card fade-up" data-type="analytics">
+        <div class="card-top">
+          <div class="avatar" style="background:linear-gradient(135deg,#f5a623,#fbbf24)">LM</div>
+          <div class="avail-badge available">● Available</div>
+        </div>
+        <div class="card-name">Layla M.</div>
+        <div class="card-role">Senior Analytics Engineer</div>
+        <div class="card-location">Dubai, UAE</div>
+        <div class="card-skills">
+          <span class="skill-tag">Power BI</span>
+          <span class="skill-tag">dbt</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">Looker</span>
+          <span class="skill-tag">BigQuery</span>
+        </div>
+        <div class="card-meta">
+          <span class="card-exp">7 yrs · E-Commerce & Logistics</span>
+          <span class="card-type">Part-Time</span>
+        </div>
+      </div>
+
+      <div class="talent-card fade-up" data-type="data-engineer">
+        <div class="card-top">
+          <div class="avatar" style="background:linear-gradient(135deg,#06b6d4,#22d3ee)">RA</div>
+          <div class="avail-badge available">● Available</div>
+        </div>
+        <div class="card-name">Rami A.</div>
+        <div class="card-role">Data Platform Engineer</div>
+        <div class="card-location">Dubai, UAE</div>
+        <div class="card-skills">
+          <span class="skill-tag">Databricks</span>
+          <span class="skill-tag">Kafka</span>
+          <span class="skill-tag">Terraform</span>
+          <span class="skill-tag">AWS</span>
+          <span class="skill-tag">Delta Lake</span>
+        </div>
+        <div class="card-meta">
+          <span class="card-exp">9 yrs · Infrastructure & Telco</span>
+          <span class="card-type">Full or Part-Time</span>
+        </div>
+      </div>
+
+      <div class="talent-card fade-up" data-type="ml-engineer">
+        <div class="card-top">
+          <div class="avatar" style="background:linear-gradient(135deg,#ec4899,#f472b6)">NA</div>
+          <div class="avail-badge soon">◐ Available Oct</div>
+        </div>
+        <div class="card-name">Nour A.</div>
+        <div class="card-role">AI / ML Engineer</div>
+        <div class="card-location">Abu Dhabi, UAE</div>
+        <div class="card-skills">
+          <span class="skill-tag">Computer Vision</span>
+          <span class="skill-tag">TensorFlow</span>
+          <span class="skill-tag">FastAPI</span>
+          <span class="skill-tag">GCP</span>
+        </div>
+        <div class="card-meta">
+          <span class="card-exp">4 yrs · Healthcare & Gov</span>
+          <span class="card-type">Project-Based</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:40px;" class="fade-up">
+      <p style="font-family:var(--font-mono);font-size:12px;color:var(--text3);letter-spacing:0.04em;">Showing 6 of 120+ vetted professionals &nbsp;·&nbsp; <a href="#build" style="color:var(--accent2);text-decoration:none;">Request a custom shortlist →</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section class="use-cases" id="use-cases">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-label">// What We Solve</div>
+      <h2 class="section-title">Built for how the<br>GCC actually works.</h2>
+      <p class="section-sub">Common engagements our teams are deployed on, across sectors that matter here.</p>
+    </div>
+    <div class="cases-grid">
+      <div class="case-card fade-up">
+        <div class="case-icon">🏦</div>
+        <div class="case-title">Data Platform Build</div>
+        <div class="case-desc">Stand up a modern data lakehouse from scratch. Ingestion, transformation, governance, and BI layer — end to end.</div>
+        <div class="case-roles">
+          <span class="case-role">Data Engineer</span>
+          <span class="case-role">Analytics Eng</span>
+        </div>
+      </div>
+      <div class="case-card fade-up">
+        <div class="case-icon">🤖</div>
+        <div class="case-title">AI Productisation</div>
+        <div class="case-desc">Take an internal ML model or LLM prototype and harden it into a production system with monitoring and governance.</div>
+        <div class="case-roles">
+          <span class="case-role">ML Engineer</span>
+          <span class="case-role">Data Scientist</span>
+        </div>
+      </div>
+      <div class="case-card fade-up">
+        <div class="case-icon">📊</div>
+        <div class="case-title">Analytics Modernisation</div>
+        <div class="case-desc">Migrate from spreadsheets and legacy BI tools to a governed, self-serve analytics environment.</div>
+        <div class="case-roles">
+          <span class="case-role">Analytics Eng</span>
+          <span class="case-role">Data Engineer</span>
+        </div>
+      </div>
+      <div class="case-card fade-up">
+        <div class="case-icon">🏛️</div>
+        <div class="case-title">Government Data Programs</div>
+        <div class="case-desc">Integrated data infrastructure for public sector entities aligned with UAE national digitisation mandates.</div>
+        <div class="case-roles">
+          <span class="case-role">Data Engineer</span>
+          <span class="case-role">Data Scientist</span>
+          <span class="case-role">Analytics</span>
+        </div>
+      </div>
+      <div class="case-card fade-up">
+        <div class="case-icon">⚡</div>
+        <div class="case-title">Team Augmentation</div>
+        <div class="case-desc">Embed senior data professionals directly into your existing team to unblock a specific project or cover a capability gap.</div>
+        <div class="case-roles">
+          <span class="case-role">Any Role</span>
+          <span class="case-role">Any Duration</span>
+        </div>
+      </div>
+      <div class="case-card fade-up">
+        <div class="case-icon">🔮</div>
+        <div class="case-title">Fractional Data Leadership</div>
+        <div class="case-desc">A senior data leader embedded part-time — setting strategy, managing the team, and reporting to your C-suite.</div>
+        <div class="case-roles">
+          <span class="case-role">Data Lead</span>
+          <span class="case-role">Fractional CDO</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section class="partners" id="partners">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-label">// Ecosystem</div>
+      <h2 class="section-title">Better together.</h2>
+      <p class="section-sub">We work with consultancies, recruiters, technology vendors, and talent programs to deliver data teams across the GCC.</p>
+    </div>
+    <div class="partner-grid">
+      <div class="partner-card fade-up">
+        <div class="partner-icon">🏢</div>
+        <div class="partner-title">Consultancies & SIs</div>
+        <div class="partner-desc">You win the engagement, we supply the specialist data talent. Embedded teams that work under your project governance and delivery model.</div>
+      </div>
+      <div class="partner-card fade-up">
+        <div class="partner-icon">🤝</div>
+        <div class="partner-title">Recruitment Partners</div>
+        <div class="partner-desc">Refer data-specific briefs you can't fill in-house. We handle the technical vetting and matching — you keep the client relationship.</div>
+      </div>
+      <div class="partner-card fade-up">
+        <div class="partner-icon">☁️</div>
+        <div class="partner-title">Technology Vendors</div>
+        <div class="partner-desc">Your GCC customers need implementation talent for Snowflake, Databricks, dbt, and cloud platforms. We have certified professionals ready.</div>
+      </div>
+      <div class="partner-card fade-up">
+        <div class="partner-icon">📈</div>
+        <div class="partner-title">Investors & Portfolios</div>
+        <div class="partner-desc">Give your portfolio companies instant access to fractional data leadership and engineering teams — without the overhead of permanent hires.</div>
+      </div>
+      <div class="partner-card fade-up">
+        <div class="partner-icon">🏛️</div>
+        <div class="partner-title">Government Programs</div>
+        <div class="partner-desc">Aligned with Nafis, HRDF, and national workforce development. We place nationals into real data delivery teams alongside senior professionals.</div>
+      </div>
+      <div class="partner-card fade-up">
+        <div class="partner-icon">🎓</div>
+        <div class="partner-title">Talent Partners</div>
+        <div class="partner-desc">Staffing firms, bootcamps, and specialist recruiters — place your professionals through our managed bench for project-based deployments.</div>
+      </div>
+    </div>
+    <div class="partner-cta-row fade-up">
+      <a href="mailto:partners@arkonis.ai?subject=Partnership%20Enquiry&body=Hi%20Arkonis%2C%0A%0AI%27m%20interested%20in%20exploring%20a%20partnership.%0A%0AOrganisation%3A%20%0APartnership%20type%3A%20%0A%0AThanks!" class="btn-primary">
+        Explore a Partnership
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <p style="margin-top:16px;font-family:var(--font-mono);font-size:12px;color:var(--text3);letter-spacing:0.04em;">Or email us directly at partners@arkonis.ai</p>
+    </div>
+  </div>
+</section>
+
+<!-- BUILD TEAM CTA -->
+<section class="build-team" id="build">
+  <div class="container">
+    <div class="build-card fade-up">
+      <div>
+        <div class="section-label">// Get Started</div>
+        <h2 class="build-title">Tell us what<br>you need.</h2>
+        <p class="build-sub">We'll come back to you within 24 hours with a curated shortlist. No commitment required at this stage.</p>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:20px;height:20px;background:var(--green-dim);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;">✓</div>
+            <span style="font-size:14px;color:var(--text2);font-weight:300;">No placement fees until you hire</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:20px;height:20px;background:var(--green-dim);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;">✓</div>
+            <span style="font-size:14px;color:var(--text2);font-weight:300;">Every professional is pre-vetted and reference-checked</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:20px;height:20px;background:var(--green-dim);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;">✓</div>
+            <span style="font-size:14px;color:var(--text2);font-weight:300;">Full-time, part-time, or project-based — your call</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Your Name</label>
+              <input type="text" name="name" class="form-input" placeholder="Ahmed Al Mansoori" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Company</label>
+              <input type="text" name="company" class="form-input" placeholder="Organisation name" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Work Email</label>
+            <input type="email" class="form-input" placeholder="you@company.com" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Sector</label>
+              <select name="sector" class="form-select" required>
+                <option value="" disabled selected>Select sector</option>
+                <option>Banking & Financial Services</option>
+                <option>Government & Public Sector</option>
+                <option>Energy & Utilities</option>
+                <option>Healthcare</option>
+                <option>Retail & E-Commerce</option>
+                <option>Telco & Media</option>
+                <option>Real Estate & Infrastructure</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Roles Needed</label>
+              <select name="role" class="form-select" required>
+                <option value="" disabled selected>Primary role</option>
+                <option>Data Engineer</option>
+                <option>ML Engineer</option>
+                <option>Data Scientist</option>
+                <option>Analytics Engineer</option>
+                <option>Mixed Team</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Brief (optional)</label>
+            <textarea name="brief" class="form-textarea" placeholder="What are you trying to build or solve? The more context, the better our match."></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">
+            Request Your Team
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <p id="form-msg" style="display:none;text-align:center;margin-top:12px;font-family:var(--font-mono);font-size:12px;color:var(--green);">✓ Request received. We'll be in touch within 24 hours.</p>
+          <p style="text-align:center;margin-top:16px;font-size:13px;color:var(--text3);">
+            Not ready to hire? <a href="mailto:team@arkonis.ai?subject=Free%20Talent%20Shortlist%20Request&body=Hi%20Arkonis%2C%0A%0AI%27d%20like%20a%20free%20shortlist%20of%20available%20data%20professionals%20for%20my%20sector.%0A%0ASector%3A%20%0ARoles%20of%20interest%3A%20%0A%0AThanks!" style="color:var(--accent2);text-decoration:underline;">Get a free talent shortlist</a> — no commitment.
+          </p>
+          <p style="text-align:center;margin-top:8px;font-size:13px;color:var(--text3);">
+            Representing a client? <a href="#partners" style="color:var(--accent2);text-decoration:underline;">See our partner program</a> — we work with consultancies, SIs, and recruiters.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHATSAPP FAB — replace 971529621188 with your WhatsApp number -->
+<a href="https://wa.me/971529621188?text=Hi%20Arkonis%20%E2%80%94%20I%27d%20like%20to%20learn%20more%20about%20your%20data%20talent%20network." class="whatsapp-fab" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">arkonis<span style="color:var(--text3)">.ai</span></div>
+      <div class="footer-meta">Licensed · Registered in Abu Dhabi, UAE</div>
+      <div class="footer-links">
+        <a href="#partners">Partners</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="mailto:team@arkonis.ai">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Filter talent
+  function filterTalent(type, btn) {
+    document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.talent-card').forEach(card => {
+      if (type === 'all' || card.dataset.type === type) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('button[type="submit"]');
+    const msg = document.getElementById('form-msg');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    fetch('https://formspree.io/f/mojpvpnz', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(res => {
+      if (res.ok) {
+        msg.style.display = 'block';
+        btn.textContent = '✓ Sent';
+        btn.style.background = '#22c984';
+        form.reset();
+      } else {
+        btn.textContent = 'Error — try again';
+        btn.style.background = '#e74c3c';
+        btn.disabled = false;
+      }
+    }).catch(() => {
+      btn.textContent = 'Error — try again';
+      btn.style.background = '#e74c3c';
+      btn.disabled = false;
+    });
+  }
+</script>
+</body>
+</html>
